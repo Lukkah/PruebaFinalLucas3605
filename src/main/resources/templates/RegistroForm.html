@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>buscar persona</h1>
+			<br>
+			<form th:action="@{/getPersonaRegistro}"
+				th:object=${persona} method="POST">
+				<div>
+					<label>Documento</label>
+					<input th:field="*{documento}" type="text" />
+				</div>
+
+				<div>
+					<input type="submit" value="buscar">
+				</div>
+			</form>
+			<div>
+				<label th:text="${persona.apellido}"></label>
+			</div>
+			
+			<h1>guardar</h1>
+				<form th:action="@{/saveValidacionRegistro}" th:object=${validacion} method="POST">
+					
+				<h3>Alta validacion</h3>
+				
+				<div>
+					<input th:field ="*{persona.id}" type="hidden"  />
+				</div>
+				
+				
+				<div>
+				<label>Usa Tapabocas</label>
+				<input type="checkbox"  th:field ="*{usaTapaboca}">
+				</div>
+				<div>
+				<label>Cumple Terminacion DNI</label>
+				<input type="checkbox" th:field ="*{cumpleTerminacionDni}" >
+				</div>
+				<div>
+				<label>Posee Permiso Circulacion</label>
+				<input type="checkbox" th:field ="*{poseePermisoCirculacion}">
+				</div>
+				<div>
+				<label>Esta acompañado</label>
+				<input type="checkbox" th:field ="*{estaAcompaniado}">
+				</div>
+					
+				<div>
+				<input type="submit" value="guardar">
+				</div>
+				</form>
+			
+			
+	<form th:action="@{/saveRegistro}" th:object=${registro} method="POST">
+	<div>
+	
+		<label>Detalle lugar</label>
+		<input th:field ="${registro.detalleLugarRegistro}" type="text"  />
+	</div>
+	
+	<div>
+		<input type="submit" value="guardar Registro">
+	</div>
+	
+	</form> 
+				
+
+</body>
+</html>

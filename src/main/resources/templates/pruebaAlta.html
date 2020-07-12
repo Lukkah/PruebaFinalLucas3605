@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Alta</title>
+</head>
+<body>
+	
+	<form th:action="@{/savePersona}" th:object=${persona} method="POST">
+		<h3>Alta persona</h3>
+		<div>
+			<label>Documento</label>
+			<input th:field ="*{documento}" type="text"  />
+		</div>
+		<div>
+			<label>Apellido</label>
+			<input th:field ="*{apellido}" type="text"  />
+		</div>
+		<div>
+			<label>Nombres</label>
+			<input th:field ="*{nombres}" type="text"  />
+		</div>
+		<div>
+			<label>Nacionalidad</label>
+			<input th:field ="*{nacionalidad}" type="text"  />
+		</div>
+		
+		
+		<div>
+			<input type="submit" value="guardar">
+		</div>
+	</form>
+	
+	
+	
+	<!-- 
+	<table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Apellido</th>
+				<th>Nombre</th>
+				<th>Nacionalidad</th>
+				<th>Documento</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="per :${personas}">
+				<td th:text="${per.id}"></td>
+				<td th:text="${per.apellido}"></td>
+				<td th:text="${per.nombre}"></td>
+				<td th:text="${per.nacionalidad}"></td>
+				<td th:text="${per.documento}"></td>
+				
+			</tr>
+		</tbody>
+	</table><br><br>
+	 -->
+	
+	
+	<h1>buscar</h1><br>
+	<form th:action="@{/getPersona}" th:object=${personaAux} method="POST">
+		<div>
+			<label>Documento</label>
+			<input th:field ="${personaAux.documento}" type="text"  />
+		</div>
+		
+		<div>
+			<input type="submit" value="buscar">
+		</div>
+	</form>
+	
+	<div>
+		<label th:text="${personaAux.apellido}">as</label>
+	</div>
+	
+	
+</body>
+</html>

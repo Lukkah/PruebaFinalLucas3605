@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+
+
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>		
+<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript" src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+<title>Insert title here</title>
+</head>
+<body>
+
+		<div class="container">
+			
+			<h1>buscar</h1>
+			<br>
+			<form th:action="@{/getPersonaValidacion}"
+				th:object=${persona} method="POST">
+				<div>
+					<label>Documento</label>
+					<input th:field="*{documento}" type="text" />
+				</div>
+
+				<div>
+					<input type="submit" value="buscar">
+				</div>
+			</form>
+			
+			
+			
+			<h1>guardar</h1>
+				<form th:action="@{/save}" th:object=${validacion} method="POST">
+				<h3>Alta validacion</h3>
+				
+				<div>
+					<input th:field ="*{persona.id}" type="hidden"  />
+				</div>
+				
+				
+				<div>
+				<label>Usa Tapabocas</label>
+				<input type="checkbox"  th:field ="*{usaTapaboca}">
+				</div>
+				<div>
+				<label>Cumple Terminacion DNI</label>
+				<input type="checkbox" th:field ="*{cumpleTerminacionDni}" >
+				</div>
+				<div>
+				<label>Posee Permiso Circulacion</label>
+				<input type="checkbox" th:field ="*{poseePermisoCirculacion}">
+				</div>
+				<div>
+				<label>Esta acompañado</label>
+				<input type="checkbox" th:field ="*{estaAcompaniado}">
+				</div>
+					
+				<div>
+				<input type="submit" value="guardar">
+				</div>
+				</form>
+			
+			
+			<!-- <label>Persona</label><br/>
+				
+				<div>
+				<label>Documento</label>
+				<input th:field ="*{persona.documento}" type="text"  />
+				</div>
+				<div>
+				<label>Apellido</label>
+				<input th:field ="*{persona.apellido}" type="text"  />
+				</div>
+				<div>
+				<label>Nombres</label>
+				<input th:field ="*{persona.nombres}" type="text"  />
+				</div>
+				<div>
+				<label>Nacionalidad</label>
+				<input th:field ="*{persona.nacionalidad}" type="text"  />
+				</div> -->
+			
+<!-- 
+<div class="card-body">
+				<form class="form" role="form" th:object="${validacion}" th:action="@{/save}" method="post">
+					<div class="row">
+						<div class="col">
+							<div class="form-group row">
+								<label
+									class="col-lg-3 col-form-label form-control-label">
+									Apellido:
+								</label>
+								<div class="col-lg-9">
+									<input class="form-control"
+										type="text" th:field="${validacion.persona.apellido}">
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group row">
+								<label
+									class="col-lg-3 col-form-label form-control-label">
+									Validaciones
+								</label>
+
+								<div class="col-lg-9">
+									<div class="form-check">
+										<input class="form-check-input"
+											type="radio" name="gridRadios" id="gridRadios1"
+											th:field="${validacion.usaTapaboca}" value="tapabocas"
+											checked="checked">
+										<label class="form-check-label"
+											for="gridRadios1">
+											Usa Tapabocas
+										</label>
+									</div>
+
+
+									<div class="form-check">
+										<input class="form-check-input"
+											type="radio" name="gridRadios2" id="gridRadios2"
+											value="CONSULTOR"
+											th:field="${validacion.poseePermisoCirculacion}">
+										<label class="form-check-label"
+											for="gridRadios2">
+											Posee Permiso Circulacion
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="form-group row">
+						<div class="col-lg-12 text-center">
+							<button type="submit"
+								class="btn btn-primary">
+								Guardar Usuario
+							</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+ -->
+			
+		</div>
+</body>
+</html>
