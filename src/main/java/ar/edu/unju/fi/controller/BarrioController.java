@@ -21,26 +21,26 @@ import ar.edu.unju.fi.service.IBarrioService;
 public class BarrioController {
 
 	@Autowired
-	IBarrioService barrioService;
+	private IBarrioService barrioService;
 	
 	@Autowired
 	private Barrio barrio;
 	
-	@RequestMapping("/barrios")
-	public String getBarrios (Model model) {
-		return "Barrios";
-	}
+	//@RequestMapping("/barrios")
+	//public String getBarrios (Model model) {
+	//	return "Barrios";
+	//}
 	
-	@GetMapping("/AltaBarrios")
+	@GetMapping("/gestionLocalidades")
 	public String agregar(Model model) {
 		model.addAttribute("barrio",barrio);
-		return "barrioForm";
+		return "barrios";
 	}
 	
 	@PostMapping("/saveBarrio")
 	public String guardar (@Validated Barrio barrio , Model model) {
 		barrioService.guardarBarrio(barrio);
-		return "redirect:/barrios";
+		return agregar(model);
 	}
 	
 	

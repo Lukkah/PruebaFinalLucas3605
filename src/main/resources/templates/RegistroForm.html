@@ -6,6 +6,24 @@
 </head>
 <body>
 
+<!-- <h1>buscar barrio</h1> -->
+<!-- 			<br> -->
+<!-- 			<form th:action="@{/getBarrio}" -->
+<!-- 				th:object=${barrio} method="POST"> -->
+<!-- 				<div> -->
+<!-- 					<label>Nombre del barrio</label> -->
+<!-- 					<input th:field="*{nombre}" type="text" /> -->
+<!-- 				</div> -->
+
+<!-- 				<div> -->
+<!-- 					<input type="submit" value="buscar"> -->
+<!-- 				</div> -->
+<!-- 			</form> -->
+<!-- 			<div> -->
+<!-- 				<label th:text="${barrio.nombre}"></label> -->
+<!-- 			</div> -->
+
+
 <h1>buscar persona</h1>
 			<br>
 			<form th:action="@{/getPersonaRegistro}"
@@ -58,7 +76,13 @@
 			
 	<form th:action="@{/saveRegistro}" th:object=${registro} method="POST">
 	<div>
-	
+		
+		<select th:field="*{localidad.id}">
+			<option th:each="barrio :${localidades}"
+				th:value="${barrio.id}"
+				th:text="${barrio.nombre}">
+		</select>
+		
 		<label>Detalle lugar</label>
 		<input th:field ="${registro.detalleLugarRegistro}" type="text"  />
 	</div>

@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import ar.edu.unju.fi.entity.Barrio;
 import ar.edu.unju.fi.entity.Persona;
 import ar.edu.unju.fi.entity.RegistroTracking;
 import ar.edu.unju.fi.entity.Validacion;
+import ar.edu.unju.fi.service.IBarrioService;
 import ar.edu.unju.fi.service.IPersonaService;
 import ar.edu.unju.fi.service.IRegistroService;
 import ar.edu.unju.fi.service.IValidacionService;
@@ -29,15 +31,21 @@ public class RegistroController {
 	
 	@Autowired
 	private IRegistroService registroService;
+	
+	@Autowired
+	private IBarrioService barrioService;
 
 	@Autowired
 	Persona persona;
 	
 	@Autowired
 	Validacion validacion;
-	
+
 	@Autowired
 	RegistroTracking registro;
+
+	@Autowired
+	Barrio barrio;
 	
 
 	List<Validacion> validaciones = new ArrayList<Validacion>();
@@ -45,9 +53,12 @@ public class RegistroController {
 	
 	@GetMapping("/createRegistro")
 	public String crearValidacion(Model model) {
+		List<Barrio> localidades = barrioService.obtenerBarrios();
+		model.addAttribute("localidades",localidades);
 		model.addAttribute("persona",persona);
 		model.addAttribute("validacion",validacion);
 		model.addAttribute("registro",registro);
+		model.addAttribute("barrio",barrio);
 		return "RegistroForm";
 	}
 
@@ -76,6 +87,17 @@ public class RegistroController {
 		
 		return "RegistroForm";
 	}
+	
+//	@PostMapping("/getBarrio")
+//	public String getPersonaValidacion(@ModelAttribute Barrio barrioM, Model model) {
+//		this.barrio = new Barrio();
+//		this.barrio=barrioService.obtenerBarrioNombre(barrioM.getNombre());
+//		this.registro.setLocalidad(barrioM);
+//		model.addAttribute("registro",registro);
+//		//return "RegistroForm";
+//		return cargarBarrioEcontrado(model) ;
+//
+//	}
 	
 	
 	@PostMapping("/saveRegistro")
