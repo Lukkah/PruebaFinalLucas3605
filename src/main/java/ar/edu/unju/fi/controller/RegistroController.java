@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,7 +80,8 @@ public class RegistroController {
 	
 	@PostMapping("/saveRegistro")
 	public String guardarRegistro(@ModelAttribute RegistroTracking registro) {
-		this.registro.setValidaciones(validaciones);
+		registro.setFechaHora(LocalDateTime.now());
+		registro.setValidaciones(validaciones);
 		registroService.guardarRegistro(registro);
 		System.out.println("Registro guardado");
 		return "redirect:/createRegistro";

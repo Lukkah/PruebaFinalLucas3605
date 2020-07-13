@@ -2,10 +2,8 @@ package ar.edu.unju.fi.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -57,7 +55,7 @@ public class RegistroTracking implements Serializable{
 	@JoinTable(name = "validaciones_registros",
 	joinColumns = @JoinColumn(name = "REGISTROTRACKING_ID"),
 	inverseJoinColumns = @JoinColumn(name = "VALIDADORCONDICIONSANITARIA_ID"))
-	private List<Validacion> validaciones = new ArrayList<Validacion>();
+	private List<Validacion> validaciones;
 	
 	//Constructores--------------------------------------------------------------------
 	/**
